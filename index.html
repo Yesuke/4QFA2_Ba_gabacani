@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+</head>
+<body>
+    <h1>MULTIPLICATION TABLE</h1>
+    <label for="num1">Number 1 (Rows)</label>
+    <input type="number" id="num1" name="num1" required> 
+    <label for="num2">Number 2 (Columns)</label>
+    <input type="number" id="num2" name="num2" required> <br> <br>
+    <button onclick="generate()">GENERATE</button>
+
+    <table id="multiplicationTable" style="border-collapse: collapse;">
+    </table>
+
+    <script>
+        function generate(){
+            var row = parseInt(document.getElementById("num1").value);
+            var col = parseInt(document.getElementById("num2").value);
+
+            if((row > 10 || row < 2) && (col > 10 || col < 2)){
+                alert("Both inputs are wrong. Please enter valid numbers between 2 and 10");
+            }
+            else if((row > 10 || row < 2) && (col <= 10 || col >= 2)){
+                alert("Row input is wrong. Please enter a valid number between 2 and 10");
+            }
+            else if((col > 10 || col < 2) && (row <= 10 || row >= 2)){
+                alert("Column input is wrong. Please enter a valid number between 2 and 10");
+            }
+            else {
+                var table = document.getElementById("multiplicationTable");
+                table.innerHTML = ""; 
+
+                for (var x = 1; x <= row; x++) {
+                    var newRow = table.insertRow(); 
+
+                    for (var y = 1; y <= col; y++) {
+                        var cell = newRow.insertCell();
+                        cell.textContent = x * y; 
+                        cell.style.border = "1px solid black";
+                        cell.style.padding = "8px";
+                        cell.style.textAlign = "center";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
